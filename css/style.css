@@ -1,0 +1,13 @@
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.channel {
+	text-align: center;
+}
+
+.item {
+	padding: 15px;
+	border: 1px solid black;
+}
