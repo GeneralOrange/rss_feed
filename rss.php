@@ -16,7 +16,7 @@
   $output = "";
   $output .= "<p class='channel'><img src='" . $channel_image . "' width='140px' height='140px'>";
   $output .= "<br>";
-  $output .= "<a href='" . $channel_link. "'>" . $channel_title . "</a>";
+  $output .= "<a target='_blank' href='" . $channel_link. "'>" . $channel_title . "</a>";
   $output .= "<br>";
   $output .= $channel_desc;
   $output .= "<br>";
@@ -28,7 +28,7 @@
     $item_title=$x->item($i)->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
     $item_link=$x->item($i)->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
     $item_desc=$x->item($i)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-    $output .= "<p class='item'><a href='" . $item_link . "'>" . $item_title . "</a>";
+    $output .= "<p class='item'><a target='_blank' href='" . $item_link . "'>" . $item_title . "</a>";
     $output .= "<br>";
     $output .= $item_desc . "</p>";
   }
