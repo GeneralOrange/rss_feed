@@ -5,35 +5,35 @@
   $xmlDoc->load($xml);
 
   //get elements from "<channel>"
-  $channel=$xmlDoc->getElementsByTagName('channel')->item(0);
+  $channel = $xmlDoc->getElementsByTagName('channel')->item(0);
   $channel_title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
   $channel_link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
   $channel_desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
   $image_src = $xmlDoc->getElementsByTagName('image')->item(0);
   $channel_image = $image_src->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
+  ?>
+  
+  <div class='channel'>
+    <img src='<?= $channel_image ?>' width='140px' height='140px'>
+  <h2><a target='_blank' href='<?= $channel_link ?>'><?= $channel_title ?></a></h2>
+  <h3><?= $channel_desc ?></h3>
+  </div>
 
-  //output elements from "<channel>"
-  $output = "";
-  $output .= "<div class='channel'><img src='" . $channel_image . "' width='140px' height='140px'>";
-  $output .= "<h2><a target='_blank' href='" . $channel_link. "'>" . $channel_title . "</a></h2>";
-  $output .= "<h3>" . $channel_desc . "</h3>";
-  $output .= "</div>";
-
-  //get and output "<item>" elements
+  <?php //get and output "<item>" elements
   $x=$xmlDoc->getElementsByTagName('item');
-  for ($i=0; $i<=10; $i++) {
-    $item_title=$x->item($i)->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
-    $item_link=$x->item($i)->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-    $item_desc=$x->item($i)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-    $item_pub=$x->item($i)->getElementsByTagName('pubDate')->item(0)->childNodes->item(0)->nodeValue;
-    //$item_img=$x->item($i)->children( 'media', True )->url->childNodes->nodeValue;
-    $output .= "<div class='item'>";
-    $output .= "<h3 class='title'><a target='_blank' href='" . $item_link . "'>" . $item_title . "</a></h3>";
-    $output .= "<div class='date'>" . $item_pub . "</div>";
-    $output .= $item_desc."...";
-    //$output .= "<img src='" . $item_img . "'>";
-    $output .= "<br>";
-    $output .= "<a class='button' target='_blank' href='" . $item_link . "'>Lees Meer</a></div>";
-  }
-  echo $output;
+  
+  foreach($x as $item) :
+    $item_title = $item->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
+    $item_link = $item->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
+    $item_desc = $item->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+    $item_pub = $item->getElementsByTagName('pubDate')->item(0)->childNodes->item(0)->nodeValue;
+    ?>
+    <div class='item'>
+    <h3 class='title'><a target='_blank' href='<?= $item_link ?>'><?= $item_title ?></a></h3>
+    <div class='date'><?= $item_pub ?></div>
+    <?= $item_desc ?>
+    <br>
+    <a class='button' target='_blank' href='<?= $item_link ?>'>Lees Meer</a></div>
+  <?php endforeach; 
 ?>
+
