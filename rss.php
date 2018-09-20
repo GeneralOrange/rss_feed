@@ -25,9 +25,13 @@
     $item_title=$x->item($i)->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
     $item_link=$x->item($i)->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
     $item_desc=$x->item($i)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+    $item_pub=$x->item($i)->getElementsByTagName('pubDate')->item(0)->childNodes->item(0)->nodeValue;
+    //$item_img=$x->item($i)->children( 'media', True )->url->childNodes->nodeValue;
     $output .= "<div class='item'>";
     $output .= "<h3 class='title'><a target='_blank' href='" . $item_link . "'>" . $item_title . "</a></h3>";
+    $output .= "<div class='date'>" . $item_pub . "</div>";
     $output .= $item_desc."...";
+    //$output .= "<img src='" . $item_img . "'>";
     $output .= "<br>";
     $output .= "<a class='button' target='_blank' href='" . $item_link . "'>Lees Meer</a></div>";
   }
