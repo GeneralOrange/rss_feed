@@ -3,8 +3,8 @@ body, html {
 }
 
 body {
-	background-image: url(../img/background.jpg);
-	background-size: cover;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(165, 126, 80, 0.65) 1300px, rgba(165, 126, 80, 1) 1500px), url('../img/background.jpg') no-repeat;
+	background-size: contain;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -41,10 +41,11 @@ body {
 .button {
 	display: inline-block;
 	margin-top: 10px;
-	background-color: #f5f5f5;
+	background-color: #a57e50;
+	font-weight: bold;
 	text-decoration: none;
 	padding: 5px;
-	color: black;
+	color: white;
 	border: 1px solid black;
 }
 
