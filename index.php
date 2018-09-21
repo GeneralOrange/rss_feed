@@ -23,6 +23,11 @@
 			</ul>
 		</div>
 	</div>
+<footer>
+	<div class="container">
+		<h4>Created by General Orange | <a href="https://github.com/GeneralOrange/" target="_blank">GitHub</a></h4>
+	</div>
+</footer>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

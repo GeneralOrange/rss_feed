@@ -157,3 +157,14 @@ body {
 #orange:after {
 	background-image: url('../img/background_orange.jpg');
 }
+
+footer {
+	background-color: black;
+	margin-top: 40px;
+	color: white;
+	padding: 20px 0;
+}
+
+footer a {
+	color: #a57e50;
+}

@@ -47,14 +47,14 @@ $(document).ready(function(){
 		$('#'+val).click(function(){
 			$('body').css('background', 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba('+color+', 0.65) '+trigger_point+'px, rgba('+color+', 1) '+end_point+'px), url("img/background_'+val+'.jpg") no-repeat').css('background-size', 'contain');
 			$('.button').css('background-color', 'rgb('+color+')');
+			$('footer a').css('color', 'rgb('+color+')');
 		});
 	});
 
 	$('#default').click(function(){
 		$('body').css('background', 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(165, 126, 80, 0.65) 1300px, rgba(165, 126, 80, 1) 1500px), url("img/background.jpg") no-repeat').css('background-size', 'contain');
 		$('.button').css('background-color', '#a57e50');
+		$('footer a').css('color', '#a57e50');
 	});
-
-
 });
 
