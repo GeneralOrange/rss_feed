@@ -1,16 +1,16 @@
 <?php
 
-  $xml = 'https://www.volkskrant.nl/sport/rss.xml'; 
-  $xmlDoc = new DOMDocument();
-  $xmlDoc->load($xml);
+  $xml = 'https://www.volkskrant.nl/sport/rss.xml';
+  $load_xml = simplexml_load_file($xml);
+  $namespaces = $load_xml->channel->item->getNamespaces(true);
+  //echo $load_xml->channel->item[0]->children($namespaces['media'])->content->attributes()->url;
 
   //get elements from "<channel>"
-  $channel = $xmlDoc->getElementsByTagName('channel')->item(0);
-  $channel_title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
-  $channel_link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-  $channel_desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-  $image_src = $xmlDoc->getElementsByTagName('image')->item(0);
-  $channel_image = $image_src->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
+  $channel = $load_xml->channel;
+  $channel_title = $channel->title;
+  $channel_link = $channel->link;
+  $channel_desc = $channel->description;
+  $channel_image = $channel->image->url;
   ?>
   
   <div class='channel'>
@@ -20,20 +20,27 @@
   </div>
 
   <?php //get and output "<item>" elements
-  $x=$xmlDoc->getElementsByTagName('item');
+  $items = $load_xml->channel->item;
   
-  foreach($x as $item) :
-    $item_title = $item->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
-    $item_link = $item->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-    $item_desc = $item->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-    $item_pub = $item->getElementsByTagName('pubDate')->item(0)->childNodes->item(0)->nodeValue;
+  foreach($items as $item) :
+    $item_title = $item->title;
+    $item_link = $item->link;
+    $item_desc = $item->description;
+    $item_pub = $item->pubDate;
+    $item_img = $item->children($namespaces['media'])->content->attributes()->url;
     ?>
     <div class='item'>
-    <h3 class='title'><a target='_blank' href='<?= $item_link ?>'><?= $item_title ?></a></h3>
-    <div class='date'><?= $item_pub ?></div>
-    <?= $item_desc ?>
-    <br>
-    <a class='button' target='_blank' href='<?= $item_link ?>'>Lees Meer</a></div>
+      <div class='text'>
+        <h3 class='title'><a target='_blank' href='<?= $item_link ?>'><?= $item_title ?></a></h3>
+        <div class='date'><?= $item_pub ?></div>
+        <?= $item_desc ?>
+        <br>
+        <a class='button' target='_blank' href='<?= $item_link ?>'>Lees Meer</a>
+      </div>
+      <div class='image'>
+        <img src='<?= $item_img ?>'>
+      </div>
+    </div>
   <?php endforeach; 
 ?>
 

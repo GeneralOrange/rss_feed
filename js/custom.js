@@ -35,7 +35,7 @@ $(document).ready(function(){
 				break;
 			case 'blue':
 				var color = '62, 79, 129';
-				var trigger_point = 1100;
+				var trigger_point = 900;
 				break;
 			case 'orange':
 				var color = '249, 115, 62';
