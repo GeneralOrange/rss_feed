@@ -37,7 +37,7 @@
         <br>
         <a class='button' target='_blank' href='<?= $item_link ?>'>Lees Meer</a>
       </div>
-      <div class='image'>
+      <div class="image">
         <img src='<?= $item_img ?>'>
       </div>
     </div>
