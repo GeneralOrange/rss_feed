@@ -15,9 +15,12 @@ body {
 
 .channel {
 	text-align: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 .channel, .item {
+	display: flex;
 	padding: 15px;
 	margin: 20px 0;
 	border: 1px solid black;
@@ -52,6 +55,10 @@ body {
 .date {
 	margin-bottom: 15px;
 	color: #9C2744;
+}
+
+.text {
+	margin-right: 50px;
 }
 
 #toggle_editor {
